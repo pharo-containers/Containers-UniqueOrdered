@@ -59,6 +59,12 @@ CTUniqueOrderedTest >> testAddFirstOfTwiceTheSame [
 { #category : #tests }
 CTUniqueOrderedTest >> testAddLastOfTwiceTheSame [
 
+	"For add: the order is the order of the first addition: 
+	hence ((col add: 1; add: 2; add: 1; yourself) indexOf: 1) = 1
+
+	For all the methods where the order is explicit addFirst: addLast:, 
+   previous similar elements are removed."
+
 	collection addLast: 1.
 	collection addLast: 33.
 	self assert: (collection indexOf: 1) equals: 1.
@@ -73,7 +79,8 @@ CTUniqueOrderedTest >> testAddOfTwiceTheSame [
 	collection add: 1.
 	collection add: 33.
 	collection add: 1.
-	self assert: collection size equals: 2
+	self assert: collection size equals: 2.
+	self assert: collection first equals: 1.
 ]
 
 { #category : #tests }
