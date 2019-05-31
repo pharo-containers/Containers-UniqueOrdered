@@ -12,6 +12,7 @@ This package contains two collections: one that is an ordered set and one that i
 <!-- [![Build status](https://ci.appveyor.com/api/projects/status/1wdnjvmlxfbml8qo?svg=true)](https://ci.appveyor.com/project/olekscode/dataframe)  -->
 
 
+## Example 
 
 ```
 CTUniqueOrderedTest >> testAddBeforeOfTwiceTheSame [
@@ -35,7 +36,20 @@ CTUniqueOrderedTest >> testAddBeforeOfTwiceTheSame [
 	self assert: (collection indexOf: 33) equals: 3.
 ]
 ```
-
+## Loading
+```
+Metacello new
+   baseline: 'ContainersUniqueOrdered';
+   repository: 'github://Ducasse/Containers-UniqueOrdered';
+   load.
+ ```
+ 
+ ## If you want to depend on it:
+ ```
+ spec 
+   baseline: 'ContainersUniqueOrdered' 
+   with: [ spec repository: 'github://Ducasse/Containers-UniqueOrdered/src' ].
+ ```
 
 
 This package is part of the Containers project: This project is to collect, clean, test and document alternate collection datastructures. 
