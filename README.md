@@ -1,6 +1,12 @@
 # Containers-UniqueOrdered
+
+<a href="https://www.pharo.org">
+    <img alt="Pharo" src="https://img.shields.io/static/v1?style=for-the-badge&message=Pharo&color=3297d4&logo=Harbor&logoColor=FFFFFF&label=" />
+</a>
+
 To get unique (set) but ordered collection.
 This package contains two collections: one that is an ordered set and one that is an ordered collection with unique items. 
+
 
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://img.shields.io/badge/license-MIT-blue.svg)
