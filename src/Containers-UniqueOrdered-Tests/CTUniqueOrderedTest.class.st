@@ -90,3 +90,36 @@ CTUniqueOrderedTest >> testAdditionOfTwiceTheSameDoNotCareOfOrder [
 	collection add: 1.
 	self assert: collection size equals: 1.
 ]
+
+{ #category : #tests }
+CTUniqueOrderedTest >> testUnion [
+    | col1 col2 result |
+    col1 := CTUniqueOrderedCollection new add: 1; add: 2; add: 3; yourself.
+    col2 := CTUniqueOrderedCollection new add: 2; add: 3; add: 4; yourself.
+    result := col1 union: col2.
+    
+    self assert: result size equals: 4.
+    self assert: result asArray equals: #(1 2 3 4).
+]
+
+{ #category : #tests }
+CTUniqueOrderedTest >> testDifference [
+    | col1 col2 result |
+    col1 := CTUniqueOrderedCollection new add: 1; add: 2; add: 3; add: 4; yourself.
+    col2 := CTUniqueOrderedCollection new add: 2; add: 4; yourself.
+    result := col1 difference: col2.
+    
+    self assert: result size equals: 2.
+    self assert: result asArray equals: #(1 3).
+]
+
+{ #category : #tests }
+CTUniqueOrderedTest >> testIntersection [
+    | col1 col2 result |
+    col1 := CTUniqueOrderedCollection new add: 1; add: 2; add: 3; add: 4; yourself.
+    col2 := CTUniqueOrderedCollection new add: 2; add: 4; add: 5; yourself.
+    result := col1 intersection: col2.
+    
+    self assert: result size equals: 2.
+    self assert: result asArray equals: #(2 4).
+]
