@@ -125,7 +125,10 @@ CTSmallOrderedSetTest >> testSize [
 ]
 
 { #category : #testing }
-CTSmallOrderedSetTest >> testUnion [
+CTSmallOrderedSetTest >> testUnion[
+    "Tests the union operation of CTSmallOrderedSet to ensure it combines two sets, maintaining uniqueness and preserving the order of elements."
+    "scope: class-variables  &  instance-variables: collection"
+
     | set1 set2 result |
     set1 := CTSmallOrderedSet withAll: #(1 2 3).
     set2 := CTSmallOrderedSet withAll: #(2 3 4).
@@ -138,8 +141,6 @@ CTSmallOrderedSetTest >> testUnion [
     self assert: (result includes: 4).
     
     "Test order preservation"
-    result := CTSmallOrderedSet new.
-    result addAll: result asArray. "Convert to array and back to ensure order"
     self assert: result asArray equals: #(1 2 3 4).
 ]
 
