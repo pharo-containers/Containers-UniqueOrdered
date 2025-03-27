@@ -123,3 +123,52 @@ CTSmallOrderedSetTest >> testSize [
 	collection addAll: #(2 1 1).
 	self assert: collection size equals: 2.
 ]
+
+{ #category : #testing }
+CTSmallOrderedSetTest >> testUnion[
+    "Tests the union operation of CTSmallOrderedSet to ensure it combines two sets, maintaining uniqueness and preserving the order of elements."
+    "scope: class-variables  &  instance-variables: collection"
+
+    | set1 set2 result |
+    set1 := CTSmallOrderedSet withAll: #(1 2 3).
+    set2 := CTSmallOrderedSet withAll: #(2 3 4).
+    result := set1 union: set2.
+    
+    self assert: result size equals: 4.
+    self assert: (result includes: 1).
+    self assert: (result includes: 2).
+    self assert: (result includes: 3).
+    self assert: (result includes: 4).
+    
+    "Test order preservation"
+    self assert: result asArray equals: #(1 2 3 4).
+]
+
+{ #category : #testing }
+CTSmallOrderedSetTest >> testDifference [
+    | set1 set2 result |
+    set1 := CTSmallOrderedSet withAll: #(1 2 3 4).
+    set2 := CTSmallOrderedSet withAll: #(2 4).
+    result := set1 difference: set2.
+    
+    self assert: result size equals: 2.
+    self assert: (result includes: 1).
+    self assert: (result includes: 3).
+    self deny: (result includes: 2).
+    self deny: (result includes: 4).
+]
+
+{ #category : #testing }
+CTSmallOrderedSetTest >> testIntersection [
+    | set1 set2 result |
+    set1 := CTSmallOrderedSet withAll: #(1 2 3 4).
+    set2 := CTSmallOrderedSet withAll: #(2 4 5).
+    result := set1 intersection: set2.
+    
+    self assert: result size equals: 2.
+    self assert: (result includes: 2).
+    self assert: (result includes: 4).
+    self deny: (result includes: 1).
+    self deny: (result includes: 3).
+    self deny: (result includes: 5).
+]
