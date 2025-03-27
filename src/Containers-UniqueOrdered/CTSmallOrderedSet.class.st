@@ -165,9 +165,3 @@ CTSmallOrderedSet >> intersection: aCollection [
             result add: each ] ].
     ^ result
 ]
-
-{ #category : #converting }
-CTSmallOrderedSet >> asArray[
-	"Return an array containing all elements in the order they are stored."
-	^ table copyFrom: 1 to: size
-]

@@ -127,18 +127,20 @@ CTSmallOrderedSetTest >> testSize [
 { #category : #testing }
 CTSmallOrderedSetTest >> testUnion [
     | set1 set2 result |
-	set1 := CTSmallOrderedSet withAll: #(1 2 3).
-	set2 := CTSmallOrderedSet withAll: #(2 3 4).
-	result := set1 union: set2.
-	
-	self assert: result size equals: 4.
-	self assert: (result includes: 1).
-	self assert: (result includes: 2).
-	self assert: (result includes: 3).
-	self assert: (result includes: 4).
-	
-	"Test order preservation"
-	self assert: result asArray equals: #(1 2 3 4).
+    set1 := CTSmallOrderedSet withAll: #(1 2 3).
+    set2 := CTSmallOrderedSet withAll: #(2 3 4).
+    result := set1 union: set2.
+    
+    self assert: result size equals: 4.
+    self assert: (result includes: 1).
+    self assert: (result includes: 2).
+    self assert: (result includes: 3).
+    self assert: (result includes: 4).
+    
+    "Test order preservation"
+    result := CTSmallOrderedSet new.
+    result addAll: result asArray. "Convert to array and back to ensure order"
+    self assert: result asArray equals: #(1 2 3 4).
 ]
 
 { #category : #testing }

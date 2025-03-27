@@ -58,29 +58,3 @@ CTUniqueOrderedCollection >> addLast: newObject [
 		ifTrue: [ self remove: newObject ].
 	^ super addLast: newObject
 ]
-
-{ #category : #operations }
-CTUniqueOrderedCollection >> union: aCollection [
-    "Return a new collection containing all elements from self and aCollection"
-    ^ self copy addAll: aCollection; yourself
-]
-
-{ #category : #operations }
-CTUniqueOrderedCollection >> difference: aCollection [
-    "Return a new collection containing elements in self that are not in aCollection"
-    | result |
-    result := self copy.
-    aCollection do: [ :each | result remove: each ifAbsent: [  ] ].
-    ^ result
-]
-
-{ #category : #operations }
-CTUniqueOrderedCollection >> intersection: aCollection [
-    "Return a new collection containing elements present in both self and aCollection"
-    | result |
-    result := self class new.
-    self do: [ :each | 
-        (aCollection includes: each) ifTrue: [ 
-            result add: each ] ].
-    ^ result
-]
