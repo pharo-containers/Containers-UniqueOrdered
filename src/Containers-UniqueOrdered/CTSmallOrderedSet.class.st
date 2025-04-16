@@ -139,3 +139,35 @@ CTSmallOrderedSet >> removeIndex: index [
 CTSmallOrderedSet >> size [
 	^ size
 ]
+
+{ #category : #operations }
+CTSmallOrderedSet >> union: aCollection [
+    "Return a new set containing all elements from self and aCollection"
+    ^ self copy addAll: aCollection; yourself
+]
+
+{ #category : #operations }
+CTSmallOrderedSet >> difference: aCollection [
+    "Return a new set containing elements in self that are not in aCollection"
+    | result |
+    result := self copy.
+    aCollection do: [ :each | result remove: each ifAbsent: [  ] ].
+    ^ result
+]
+
+{ #category : #operations }
+CTSmallOrderedSet >> intersection: aCollection [
+    "Return a new set containing elements present in both self and aCollection"
+    | result |
+    result := self class new.
+    self do: [ :each | 
+        (aCollection includes: each) ifTrue: [ 
+            result add: each ] ].
+    ^ result
+]
+
+{ #category : #converting }
+CTSmallOrderedSet >> asArray[
+	"Return an array containing all elements in the order they are stored."
+	^ table copyFrom: 1 to: size
+]
